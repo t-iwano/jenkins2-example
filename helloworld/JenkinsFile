@@ -4,3 +4,13 @@ node {
    stage 'Stage 2'
    echo 'Hello World 2'
 }
+
+node {
+   stage 'Stage 3'
+   echo 'Hello World 1'
+   stage 'Stage 4'
+   echo 'Hello World 2'
+}
+
+stage 'Stage5'
+
