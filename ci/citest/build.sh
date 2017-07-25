@@ -4,6 +4,11 @@
 set -ex -o pipefail
 SCRIPT_DIR="$(cd "$(dirname $(readlink -f "$0"))" && pwd -P)"
 
+finish_build() {
+  echo "build finished"
+}
+trap 'finish_build' EXIT
+
 # check the step file.
 STEP_LIST_PATH=${SCRIPT_DIR}/steplist.conf
 if [[ -n "${STEP_LIST_PATH}" && ! -f "${STEP_LIST_PATH}" ]]; then
@@ -20,6 +25,20 @@ for step in $(cat ${STEP_LIST_PATH}); do
     echo "ERROR: Can't find the file: ${STEP_SCRIPT_PATH}" >&2
     exit 1
   fi
-  /bin/bash -c "${STEP_SCRIPT_PATH}"
+
+  (
+    post_build() {
+      echo "start post build"
+    }
+    trap 'post_build' EXIT
+    failure_build() {
+      echo "build failure"
+    }
+    trap 'failure_build' ERR
+
+    /bin/bash -c "${STEP_SCRIPT_PATH}"
+    # success build
+    echo "build success"
+  )
 done
 
