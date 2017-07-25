@@ -3,7 +3,7 @@
 node() {
   stage "Checkout"
   checkout scm
-  state "Build sandbox"
+  stage "Build sandbox"
   sh "echo 'start build sandbox"
 }
 
