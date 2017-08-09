@@ -1,5 +1,6 @@
 #!/usr/bin/env groovy
 
+import groovy.transform.Field
 @Field buildEnvContext = [
   "BUILD_OS": "all",
   "REBUILD": "false"
