@@ -7,7 +7,7 @@ import groovy.transform.Field
 ]
 
 def buildEnvDefaultPath = "./ci/test/sample/build.env.default"
-def buildEnvDefault = new File(buildEnvDefaultPath)
+//def buildEnvDefault = new File(buildEnvDefaultPath)
 
 node() {
   stage "Checkout"
@@ -15,8 +15,11 @@ node() {
   stage "Build sandbox"
   println env
   println buildEnvContext
+  println readFile(buildEnvdefaultPath)
+/*
   if ( buildEnvDefault.exists() ) {
     println buildEnvDefault
   }
+*/
 }
 
