@@ -16,7 +16,7 @@ node() {
   println env
   println buildEnvContext
   buildEnvContext = readFile('./ci/citest/sample/build.env.default')
-  println BUildEnvContext
+  println buildEnvContext
   println buildEnvContext.BUILD_OS
   println buildEnvContext.REBUILD
   println buildEnvContext.BUILD_CACHE_DIR
