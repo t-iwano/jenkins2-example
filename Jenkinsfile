@@ -6,7 +6,7 @@ import groovy.transform.Field
   "REBUILD": "false"
 ]
 
-def buildEnvDefaultPath = "./ci/test/sample/build.env/default"
+def buildEnvDefaultPath = "./ci/test/sample/build.env.default"
 def buildEnvDefault = new File(buildEnvDefaultPath)
 
 node() {
