@@ -15,7 +15,7 @@ node() {
   stage "Build sandbox"
   println env
   println buildEnvContext
-  println readFile(buildEnvdefaultPath)
+  println readFile('./ci/test/sample/build.env.default')
 /*
   if ( buildEnvDefault.exists() ) {
     println buildEnvDefault
