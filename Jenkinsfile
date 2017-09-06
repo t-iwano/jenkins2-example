@@ -7,7 +7,7 @@ node() {
   stage "Checkout"
   checkout scm
   stage "Build sandbox"
-  readFile('./ci/citest/build.env.default')..split("\r?\n").each { name, value ->
+  readFile('./ci/citest/build.env.default').split("\r?\n").each { name, value ->
     println "Name: $name -> Value $value"
   }
 }
