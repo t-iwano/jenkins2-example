@@ -1,32 +1,14 @@
 #!/usr/bin/env groovy
 
 import groovy.transform.Field
-@Field buildEnvContext = [
-  "BUILD_OS": "all",
-  "REBUILD": "false"
-]
-
-def buildEnvDefaultPath = "./ci/citest/sample/build.env.default"
-//def buildEnvDefault = new File(buildEnvDefaultPath)
+@Field buildEnvContext = []
 
 node() {
   stage "Checkout"
   checkout scm
   stage "Build sandbox"
-  println env
-  println buildEnvContext
-  buildEnvContext = readFile('./ci/citest/sample/build.env.default')
-  println buildEnvContext
-/*
-  println buildEnvContext.BUILD_OS
-  println buildEnvContext.REBUILD
-  println buildEnvContext.BUILD_CACHE_DIR
-*/
-  
-/*
-  if ( buildEnvDefault.exists() ) {
-    println buildEnvDefault
+  readFile('./ci/citest/build.env.default')..split("\r?\n").each { name, value ->
+    println "Name: $name -> Value $value"
   }
-*/
 }
 
